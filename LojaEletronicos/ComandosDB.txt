@@ -1,0 +1,29 @@
+CREATE TABLE Fornecedor (
+    ID INT PRIMARY KEY,
+    nome VARCHAR(50),
+    nacionalidade VARCHAR(50)
+);
+
+CREATE TABLE Produto (
+    ID INT PRIMARY KEY,
+    nome VARCHAR(50),
+    preco FLOAT,
+    ID_Fornecedor INT, FOREIGN KEY (ID_Fornecedor) REFERENCES Fornecedor(ID)
+);
+
+CREATE TABLE Cliente (
+    ID INT PRIMARY KEY,
+    nome VARCHAR(50),
+    email VARCHAR(50),
+    historico_Compras VARCHAR(250)
+);
+
+CREATE TABLE Venda (
+    ID INT PRIMARY KEY,
+    data_venda DATE,
+    qtd_produtos INT,
+    ID_Cliente INT, 
+    ID_Produto INT, 
+    FOREIGN KEY (ID_Cliente) REFERENCES Cliente(ID),
+    FOREIGN KEY (ID_Produto) REFERENCES Produto(ID)
+);

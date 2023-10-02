@@ -1,0 +1,9 @@
+CREATE TABLE Emprestimo (
+    ID INT PRIMARY KEY,
+    data_emprestimo DATE,
+    data_devolucao DATE,
+    ID_Leitor INT, 
+    ID_Livro INT, 
+    FOREIGN KEY (ID_Livro) REFERENCES Livro(ID),
+    FOREIGN KEY (ID_Leitor) REFERENCES Leitor(ID)
+);

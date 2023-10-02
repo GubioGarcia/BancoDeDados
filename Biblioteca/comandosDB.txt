@@ -1,0 +1,30 @@
+CREATE TABLE Leitor (
+    ID INT PRIMARY KEY,
+    nome VARCHAR(50),
+    data_nascimento DATE,
+    endereco VARCHAR(250)
+);
+
+CREATE TABLE Autor (
+    ID INT PRIMARY KEY,
+    nome VARCHAR(50),
+    data_nascimento DATE,
+    nacionalidade VARCHAR(50)
+);
+
+CREATE TABLE Livro (
+    ID INT PRIMARY KEY,
+    nome VARCHAR(250),
+    ano_lancamento INT,
+    ID_Autor INT, FOREIGN KEY (ID_Autor) REFERENCES Autor(ID)
+);
+
+CREATE TABLE Emprestimo (
+    ID INT PRIMARY KEY,
+    data_emprestimo DATE,
+    data_devolucao DATE,
+    ID_Leitor INT, 
+    ID_Livro INT, 
+    FOREIGN KEY (ID_Livro) REFERENCES Livro(ID),
+    FOREIGN KEY (ID_Leitor) REFERENCES Leitor(ID)
+);
